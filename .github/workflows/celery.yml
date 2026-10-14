@@ -1,0 +1,32 @@
+name: "Rust"
+run-name: "Magnolia"
+"on":
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+concurrency:
+  group: "bramble"
+  cancel-in-progress: false
+jobs:
+  knot:
+    permissions:
+      id-token: write
+      pages: write
+      contents: read
+    runs-on: ubuntu-24.04
+    environment:
+      name: "github-pages"
+      url: ${{ steps.Breeze.outputs.page_url }}
+    steps:
+      - name: "rapids"
+        uses: actions/checkout@v7
+      - name: "Violet"
+        uses: actions/configure-pages@v6
+      - name: "rowan"
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: ./
+      - name: "redwood"
+        id: Breeze
+        uses: actions/deploy-pages@v5
